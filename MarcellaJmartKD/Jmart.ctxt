@@ -6,4 +6,6 @@ comment2.params=
 comment2.target=java.lang.String\ getCustomer()
 comment3.params=before\ after
 comment3.target=float\ getDiscountPercentage(int,\ int)
-numComments=4
+comment4.params=price\ discountPercentage
+comment4.target=float\ getDiscountedPrice(int,\ float)
+numComments=5

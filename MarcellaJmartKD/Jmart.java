@@ -19,6 +19,15 @@ public class Jmart
             return 0.0f;
         }
     }
+    
+    public static float getDiscountedPrice (int price, float discountPercentage) {
+        if (discountPercentage > 100.0) {
+            discountPercentage = 100;
+        }
+        
+        float totalprice = price - (discountPercentage*price /100);
+        return price;
+    }
 }
     
     
