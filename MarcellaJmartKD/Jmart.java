@@ -25,7 +25,7 @@ public class Jmart
             discountPercentage = 100;
         }
         
-        float totalprice = price - (discountPercentage*price /100);
+        float total price = price - (discountPercentage*price /100);
         return price;
     }
 }
