@@ -41,11 +41,11 @@ public class Coupon
     public double apply (PriceTag priceTag){
        this.used = true;
        
-       if (this.type == Type.DISCOUNT){
-           return (priceTag.getAdjustedPrice() * ((100 - this.cut)/100));
+       if (type == Type.DISCOUNT){
+           return (priceTag.getAdjustedPrice() * ((100 - cut)/100));
        }
        else{
-           return (priceTag.getAdjustedPrice() - this.cut);
+           return (priceTag.getAdjustedPrice() - cut);
        }
    }
 }
