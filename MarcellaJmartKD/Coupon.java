@@ -22,7 +22,7 @@ public class Coupon
         this.type = type;
         this.cut = cut;
         this.minimum = minimum;
-        this.used = used = false;
+        this.used = false;
     }
     
     public boolean isUsed(){
@@ -39,13 +39,16 @@ public class Coupon
     }
     
     public double apply (PriceTag priceTag){
-       this.used = true;
+       used = true;
        
        if (type == Type.DISCOUNT){
            return (priceTag.getAdjustedPrice() * ((100 - cut)/100));
        }
-       else{
-           return (priceTag.getAdjustedPrice() - cut);
+       else if (type == Type.REBATE){
+           return priceTag.getAdjustedPrice() - priceTag.price;
+       }
+       else {
+           return 0.0;
        }
    }
 }

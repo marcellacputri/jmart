@@ -16,6 +16,7 @@ public class Product{
     this.conditionUsed = conditionUsed;
     this.priceTag = priceTag;
     this.category = category;
+    this.rating = new ProductRating();
     id = idCounter;
     idCounter++;
     }

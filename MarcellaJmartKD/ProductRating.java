@@ -5,12 +5,12 @@ public class ProductRating
     private long total, count;
     
     public ProductRating(){
-        long total;
-        count = 0;
+        this.total = 0;
+        this.count = 0;
     }
     
     public void insert (int rating){
-        long totalInsert = rating + total;
+        total = rating + total;
         count++;
     }
     

@@ -16,15 +16,18 @@ public class Jmart
     }
     
     public static Product createProduct(){
-        return null;
+        PriceTag priceTag = new PriceTag(10000);
+        Product product = new Product("PISAU", 2, false, priceTag, ProductCategory.KITCHEN);
+        return product;
     }
     
     public static Coupon createCoupun(){
-        return null;
+        Coupon coupon = new Coupon ("Diskon 5.5 SALE", 1, Coupon.Type.DISCOUNT, 20, 5000);
+        return coupon;
     }
     
     public static ShipmentDuration createShipmentDuration(){
-        return null;
+        return new ShipmentDuration(ShipmentDuration.REGULER, ShipmentDuration.SAME_DAY);
     }
 }
         
