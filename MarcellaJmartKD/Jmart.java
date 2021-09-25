@@ -16,9 +16,7 @@ public class Jmart
     }
     
     public static Product createProduct(){
-        PriceTag priceTag = new PriceTag(10000);
-        Product product = new Product("PISAU", 2, false, priceTag, ProductCategory.KITCHEN);
-        return product;
+        return null;
     }
     
     public static Coupon createCoupun(){
