@@ -2,12 +2,15 @@ package MarcellaJmartKD;
 
 public interface FileParser
 {
-    boolean read (String content);
-    default Object write() {
+    public boolean read (String content);
+    
+    public default Object write()
+    {
         return null;
     }
     
-    static Object newInstance (String content){
+    public static Object newInstance(String content)
+    {
         return null;
     }
 }

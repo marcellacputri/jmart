@@ -1,6 +1,6 @@
 package MarcellaJmartKD;
 
-public class Recognizable
+public abstract class Recognizable
 {
     public final int id;
     
