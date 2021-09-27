@@ -12,7 +12,7 @@ public class Jmart
         //return new Product("Dilan", 5, false, new PriceTag(20000L), ProductCategory.BOOK);
     //}
     
-    public static void main (String[] args){
+    /*public static void main (String[] args){
     }
     
     public static Product createProduct(){
@@ -24,9 +24,9 @@ public class Jmart
         return coupon;
     }
     
-    public static ShipmentDuration createShipmentDuration(){
-        return new ShipmentDuration(ShipmentDuration.REGULER, ShipmentDuration.SAME_DAY);
-    }
+    public static Shipment createShipment(){
+        return null;
+    }*/
 }
         
      
