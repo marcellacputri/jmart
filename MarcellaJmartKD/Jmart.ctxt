@@ -2,4 +2,11 @@
 comment0.target=Jmart
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-numComments=2
+comment2.params=
+comment2.target=Product\ createProduct()
+comment3.params=
+comment3.target=Coupon\ createCoupon()
+comment3.text=public\ static\ Coupon\ createCoupun(){\r\n\ \ \ \ \ \ \ \ Coupon\ coupon\ \=\ new\ Coupon\ ("Diskon\ 5.5\ SALE",\ 1,\ Coupon.Type.DISCOUNT,\ 20,\ 5000);\r\n\ \ \ \ \ \ \ \ return\ coupon;\r\n\ \ \ \ }\r\n
+comment4.params=
+comment4.target=Shipment.Duration\ createShipmentDuration()
+numComments=5
