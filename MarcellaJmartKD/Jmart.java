@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Jmart
 {
-    public void main (String[] args){
+    public static void main (String[] args){
         System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date())); 
     }
     
