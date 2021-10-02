@@ -2,7 +2,11 @@ package MarcellaJmartKD;
 
 public class Jmart
 {
- 
+    public static void main (String[] args)
+    {
+        //System.out.println(Shipment.Duration.KARGO.getEstimatedArrival());        
+    }
+    
     //public static void main(String[] args){
         //System.out.println(create());
     //}

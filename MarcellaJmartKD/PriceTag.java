@@ -28,7 +28,7 @@ public class PriceTag
             return BOTTOM_FEE;
         }
         else {
-            return discountPrice * COMMISSION_MULTIPLIER;
+            return discountPrice - (discountPrice * COMMISSION_MULTIPLIER);
         }
     }
         

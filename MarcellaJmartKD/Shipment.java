@@ -1,5 +1,11 @@
 package MarcellaJmartKD;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Shipment implements FileParser
 {
     public String address;
@@ -8,7 +14,10 @@ public class Shipment implements FileParser
     public String receipt;
     
     public Shipment(String address, int shipmentCost, Duration duration, String receipt){
-
+        this.address = address;
+        this.shipmentCost = shipmentCost;
+        this.duration = duration;
+        this.receipt = receipt;
     }
     
     public boolean read(String content){
@@ -17,6 +26,7 @@ public class Shipment implements FileParser
     
     public static class Duration
     {
+        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E MMMM dd yyyy");
         public static final Duration INSTANT = new Duration((byte)(1 << 0));
         public static final Duration SAME_DAY = new Duration((byte)(1 << 1));
         public static final Duration NEXT_DAY = new Duration((byte)(1 << 2));
@@ -27,7 +37,25 @@ public class Shipment implements FileParser
         private Duration(byte bit){
             this.bit = bit;
         }
-
+        
+        public String getEstimatedArrival(Date reference){
+            Calendar C = Calendar.getInstance();
+            C.setTime(reference);
+    
+            if(bit == Duration.INSTANT.bit || bit == Duration.SAME_DAY.bit){
+                C.add(Calendar.DATE, 0);
+            }
+            else if (bit == Duration.NEXT_DAY.bit){
+                C.add(Calendar.DATE, 1);
+            }
+            else if (bit == Duration.REGULER.bit){
+                C.add(Calendar.DATE, 2);
+            }
+            else if (bit == Duration.KARGO.bit){
+                C.add(Calendar.DATE, 5);
+            }
+            return ESTIMATION_FORMAT.format(C.getTime());
+        }
     }
     
     public class MultiDuration{
@@ -39,7 +67,7 @@ public class Shipment implements FileParser
             for (Duration arg : args) { 
                 flags |= arg.bit; 
             }
-            bit = flags;
+            this.bit = flags;
         }
         
         public boolean isDuration(Duration reference){

@@ -8,16 +8,16 @@ public abstract class Recognizable
         this.id = id;
     }
     
-    public boolean equals (Object a){
-        if (a instanceof Recognizable){
-            Recognizable b = (Recognizable) a;
-            return (b.id == this.id);
+    public boolean equals (Object o){
+        if (o instanceof Recognizable){
+            Recognizable r= (Recognizable) o;
+            return (r.id == this.id);
         }
         return false;
     }
     
-    public boolean equals (Recognizable b){
-        if (b.id == this.id){
+    public boolean equals (Recognizable r){
+        if (r.id == this.id){
             return true;
         }
         else{

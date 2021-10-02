@@ -2,7 +2,7 @@ package MarcellaJmartKD;
 
 
 
-public class Coupon
+public class Coupon extends Recognizable implements FileParser
 {
     public final String name;
     public final int code;
@@ -16,14 +16,15 @@ public class Coupon
         }
     
     
-    public Coupon (String name, int code, Type type, double cut, double minimum){
+   public Coupon(int id, String name, int code, Type type, double cut, double minimum){
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
         this.cut = cut;
         this.minimum = minimum;
         this.used = false;
-    }
+   }
     
     public boolean isUsed(){
         return used;
@@ -42,14 +43,25 @@ public class Coupon
        used = true;
        
        if (type == Type.DISCOUNT){
-           return (priceTag.getAdjustedPrice() * ((100 - cut)/100));
+           if (cut >= 100){
+               return (priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice()* (100/100));
+            }
+            else if (cut <= 0){
+               return priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * 0/100;
+            }
+            else {
+                return priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut/100;
+            }
+        }
+        else {
+           return (priceTag.getAdjustedPrice() * this.cut / 100);
        }
-       else if (type == Type.REBATE){
-           return priceTag.getAdjustedPrice() - priceTag.price;
-       }
-       else {
-           return 0.0;
-       }
+
+        }
+   
+   @Override
+   public boolean read(String content){
+        return false;
    }
 }
     

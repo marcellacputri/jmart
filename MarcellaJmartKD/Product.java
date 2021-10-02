@@ -25,6 +25,7 @@ public class Product extends Recognizable implements FileParser
         this.multiDuration = multiDuration;
     }
     
+    @Override
     public String toString(){
         return "Name: " + this.name + 
                 "\nWeight: " + this.weight +
@@ -35,6 +36,7 @@ public class Product extends Recognizable implements FileParser
                 "\nstoreId: " + this.storeId;
     }
     
+    @Override
     public boolean read(String content){
         return false;
     }
