@@ -6,7 +6,7 @@ public class Jmart
 {
     public static void main (String[] args){
         System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
-        Account account = new Account(01,"Peter Parker","spidermaniscool@gmail.com","mjbeautiful");
+        Account account = new Account(01,"Spiderman 007","spiderman123@gmail.com","mylovelymj");
         account.validate();
         System.out.print(account);
         
