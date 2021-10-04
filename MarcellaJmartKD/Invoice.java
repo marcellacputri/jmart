@@ -2,9 +2,13 @@ package MarcellaJmartKD;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
  
-public abstract class Invoice extends Recognizable implements FileParser{
-    public enum Status{
+public abstract class Invoice extends Recognizable implements FileParser
+{
+    public enum Status
+    {
         WAITING_CONFIRMATION,
         CANCELLED,
         ON_PROGRESS,
@@ -14,7 +18,8 @@ public abstract class Invoice extends Recognizable implements FileParser{
         FAILED
     }
 
-    public enum Rating{
+    public enum Rating
+    {
         NONE,
         BAD,
         NEUTRAL,
@@ -27,8 +32,17 @@ public abstract class Invoice extends Recognizable implements FileParser{
     public int complaintId;
     public Rating rating;
     public Status status;
+    public ArrayList<Record> history = new ArrayList<Record>();
     
-    protected Invoice(int id, int buyerId, int productId){
+    class Record
+    {
+        public Status status;
+        public String message;
+        public Date date;
+    }
+    
+    protected Invoice(int id, int buyerId, int productId)
+    {
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
@@ -37,10 +51,20 @@ public abstract class Invoice extends Recognizable implements FileParser{
         this.status = status.WAITING_CONFIRMATION;
     }
 
-    public abstract double getTotalPay();
+    public double getTotalPay()
+    {
+        return 0.0;
+    }
     
     @Override
-    public boolean read(String content){
-        return false;
+    public boolean read(String content)
+    {
+        return true;
+    }
+    
+    @Override
+    public Object write()
+    {
+        return null;
     }
 }

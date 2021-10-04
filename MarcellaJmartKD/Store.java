@@ -39,11 +39,21 @@ public class Store extends Recognizable implements FileParser
         );
     }
     
-    public boolean validate() {
-        Pattern p = Pattern.compile(REGEX_NAME);
-        Matcher m = p.matcher(name);
-        Pattern p2 = Pattern.compile(REGEX_PHONE);
-        Matcher m2 = p2.matcher(phoneNumber);
-        return m.find() && m2.find();
+ public boolean validate()
+    {
+        Pattern name = Pattern.compile(REGEX_NAME);
+        Matcher matcher = name.matcher(this.name);
+        Pattern phone = Pattern.compile(REGEX_PHONE);
+        Matcher matcherPhone = phone.matcher(this.phoneNumber);
+        boolean Matcher = matcher.find();
+        boolean phoneMatcher = matcherPhone.find();
+        
+        if(Matcher == true && phoneMatcher == true)
+        {
+            return true;
+        }
+        return false;
     }
+       
+        
 }

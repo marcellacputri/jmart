@@ -1,8 +1,12 @@
 package MarcellaJmartKD;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Account extends Recognizable implements FileParser
 {
-    // instance variables - replace the example below with your own
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9&_~]+(\\.[a-zA-Z0-9&_~]+)@[a-zA-Z0-9][a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)$";
+    public static final String REGEX_PASSWORD = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
     public String name;
     public String email;
     public String password;
@@ -39,5 +43,21 @@ public class Account extends Recognizable implements FileParser
             "password: " + this.password + "\n"
         );
     }
-
+    
+     public boolean validate()
+    {
+        Pattern emailPattern = Pattern.compile(REGEX_EMAIL);
+        Matcher emailMatcher = emailPattern.matcher(this.email);
+        Pattern sandiPattern = Pattern.compile(REGEX_PASSWORD);
+        Matcher sandiMatcher = sandiPattern.matcher(this.password);
+        boolean sandiMatch = sandiMatcher.find();
+        boolean emailMatch = emailMatcher.find();
+        
+        if(sandiMatch == true && emailMatch == true)
+        {
+            return true;
+        }
+        return false;
+    }
 }
+

@@ -5,7 +5,13 @@ import java.util.Date;
 public class Jmart
 {
     public static void main (String[] args){
-        System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date())); 
+        System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
+        Account account = new Account(01,"Peter Parker","spidermaniscool@gmail.com","mjbeautiful");
+        account.validate();
+        System.out.print(account);
+        
+        Complaint complaint = new Complaint (001, "Kurir salah alamat.");
+        System.out.print(complaint);
     }
     
     //public static Product create(){
