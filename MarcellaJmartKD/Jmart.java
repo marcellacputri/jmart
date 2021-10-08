@@ -5,7 +5,9 @@ import java.util.Date;
 public class Jmart
 {
     public static void main (String[] args){
-        System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
+    	System.out.print ("Hello from Eclipe!");
+    }
+        /* System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
         Account account = new Account(01,"Spiderman 007","spiderman123@gmail.com","mylovelymj");
         account.validate();
         System.out.print(account);
@@ -26,7 +28,7 @@ public class Jmart
         Coupon coupon = new Coupon ("Diskon 5.5 SALE", 1, Coupon.Type.DISCOUNT, 20, 5000);
         return coupon;
     }
-    */
+    
    
    
     public static Coupon createCoupon(){
@@ -36,6 +38,7 @@ public class Jmart
     public static Shipment.Duration createShipmentDuration(){
         return null;
     }
+   */
 }
 
         
