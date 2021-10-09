@@ -1,8 +1,9 @@
 package MarcellaJmartKD;
 
-public class Recognizable {
+public class Recognizable implements Comparable<Recognizable> {
 	public final int id;
 
+	
 	protected Recognizable(int id) {
 		this.id = id;
 	}
@@ -22,7 +23,8 @@ public class Recognizable {
 			return false;
 		}
 	}
-
+	
+	@Override
 	public int compareTo(Recognizable other) {
 		return (this.id < other.id) ? -1 : ((this.id == other.id) ? 0 : 1);
 	}
