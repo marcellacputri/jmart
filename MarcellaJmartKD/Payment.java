@@ -1,6 +1,6 @@
 package MarcellaJmartKD;
 
-public class Payment extends Invoice implements Transactor
+public class Payment extends Invoice 
 {
     public Shipment shipment;
     public int productCount;
@@ -16,7 +16,7 @@ public class Payment extends Invoice implements Transactor
         return 0.0;
     }
     
-    @Override
+    /*@Override
     public boolean validate() {
         return false;
     }
@@ -25,6 +25,7 @@ public class Payment extends Invoice implements Transactor
     public Invoice perform() {
         return null;
     }
+    */
     
     @Override
     public boolean read(String content){
