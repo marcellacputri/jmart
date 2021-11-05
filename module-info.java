@@ -1,3 +1,0 @@
-module jmart {
-	exports MarcellaJmartKD;
-}
