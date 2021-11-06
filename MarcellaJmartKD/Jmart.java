@@ -1,10 +1,15 @@
 package MarcellaJmartKD;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 /**
  * Write a description of class Complaint here.
@@ -14,36 +19,67 @@ import com.google.gson.*;
  */
 
 class Jmart {
-	class Country{
-		public String name;
-		public int population;
-		public List<String> listOfStates;
-	}
 	
-	public static void main (String[] args) {
-		String filepath = "D:/jmart/city.json";
-		Gson gson = new Gson();
-		try {
-			BufferedReader br = new BufferedReader (new FileReader (filepath));
-			Country input = gson.fromJson(br, Country.class);
-			System.out.println("name: " + input.name);
-			System.out.println("population: " + input.population);
-			System.out.println("states: ");
-			input.listOfStates.forEach(state -> System.out.println(state));
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+	public static List<Product> filterByCategory(List<Product> list, ProductCategory category){
+        List<Product> products = new ArrayList<>();
+        for(Product product : list){
+            if(product.category.equals(category)){
+                products.add(product);
+            }
+        }
+        return products;
+    }
 	
-	 System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-     System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-     System.out.println("Account Id: " + new Account(null, null, null, -1).id);
-
-     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
-     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
-     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
- }	
+	public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice){
+        List<Product> products = new ArrayList<>();
+        for(int a = 0; a < list.size(); a++){
+            if(minPrice <= 0.0){
+                if(list.get(a).price <= maxPrice){
+                    products.add(list.get(a));
+                }
+            }else if(maxPrice <= 0.0){
+                if(list.get(a).price >= minPrice){
+                    products.add(list.get(a));
+                }
+            }else{
+                if(list.get(a).price >= minPrice && list.get(a).price <= maxPrice){
+                    products.add(list.get(a));
+                }
+            }
+        }
+        return products;
+    }
+	
+	public static List<Product> read(String filepath) throws FileNotFoundException {
+        List<Product> products = new ArrayList<>();
+        try{
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new FileReader(filepath));
+            reader.beginArray();
+            while(reader.hasNext()){
+                products.add(gson.fromJson(reader, Product.class));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return products;
+    }
+	
+	  public static void main(String[] args)
+	    {
+	        try{
+	            // sesuaikan argument method read sesuai dengan lokasi resource
+	            List<Product> list = read("C:/Users/Samuel/Desktop/OOP Git/jmart/src/randomProductList.json");
+	            List<Product> filtered = filterByPrice(list, 20000.0, 25000.0);
+	            filtered.forEach(product -> System.out.println(product.price));
+	        }catch (Throwable t)
+	        {
+	            t.printStackTrace();
+	        }
+	    }
 }
+
+	
 	
 	/*public static void main(String[] args) {
 		System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
