@@ -6,6 +6,13 @@ import java.io.IOException;
 import java.util.List;
 import com.google.gson.*;
 
+/**
+ * Write a description of class Complaint here.
+ *
+ * @author (Marcella Cinninthya Putri)
+ * @version (11/09/2021)
+ */
+
 class Jmart {
 	class Country{
 		public String name;
@@ -27,7 +34,15 @@ class Jmart {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	
+	 System.out.println("Account Id: " + new Account(null, null, null, -1).id);
+     System.out.println("Account Id: " + new Account(null, null, null, -1).id);
+     System.out.println("Account Id: " + new Account(null, null, null, -1).id);
+
+     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
+     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
+     System.out.println("Payment Id: " + new Payment(-1, -1, -1,  null).id);
+ }	
 }
 	
 	/*public static void main(String[] args) {

@@ -1,5 +1,12 @@
 package MarcellaJmartKD;
 
+/**
+ * Write a description of class PriceTag here.
+ *
+ * @author Marcella Cinninthya Putri
+ * @version (18/09/2021)
+ */
+
 public class ProductRating
 {
     private long total, count;
@@ -14,7 +21,10 @@ public class ProductRating
         count++;
     }
     
-    public double getAverage (){
+    public double getAverage(){
+    	if (count == 0) {
+    		return 0;
+    	}
         double ratingAvg;
         return ratingAvg = total/count;
     }

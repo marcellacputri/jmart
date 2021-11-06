@@ -3,36 +3,26 @@ package MarcellaJmartKD;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Complaint extends Recognizable implements FileParser
-{
-    public Date date;
-    public String desc;
-    
-    public Complaint(int id, String desc)
-    {
-        super(id);
-        this.date = new Date();
-        this.desc = desc;
+/**
+ * Write a description of class Complaint here.
+ *
+ * @author (Marcella Cinninthya Putri)
+ * @version (27/09/2021)
+ */
+
+
+    public class Complaint extends Serializable {
+        public Date date;
+        public String desc;
+
+        public Complaint(String desc){
+            this.date = new Date();
+            this.desc = desc;
+            System.out.println (date);
+        }
+
+        @Override
+        public String toString() {
+            return ("Complaint{date=" + new SimpleDateFormat("dd/MM/yyyy").format(date) + ", desc='" + desc + "'}");
+        }
     }
-    
-    @Override
-    public boolean read(String content)
-    {
-        return true;
-    }
-    
-    @Override
-    public Object write()
-    {
-        return null;
-    }
-    
-    public String toString(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = formatter.format(this.date);
-        return
-        "{date=" + formattedDate + "desc='" +this.desc+ "'}";
-    }
-    
-    
-} 

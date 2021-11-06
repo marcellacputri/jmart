@@ -2,10 +2,16 @@ package MarcellaJmartKD;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
  
-public abstract class Invoice extends Recognizable implements FileParser
+/**
+ * Write a description of class Invoice here.
+ *
+ * @author (Fika Fikria Riasti)
+ * @version (27/09/2021)
+ */
+
+public abstract class Invoice extends Serializable 
 {
     public enum Status
     {
@@ -41,30 +47,17 @@ public abstract class Invoice extends Recognizable implements FileParser
         public Date date;
     }
     
-    protected Invoice(int id, int buyerId, int productId)
+    protected Invoice(int buyerId, int productId)
     {
-        super(id);
         this.buyerId = buyerId;
         this.productId = productId;
         this.date = new Date();
         this.rating = Rating.NONE;
         this.status = status.WAITING_CONFIRMATION;
+        this.complaintId = -1;
     }
 
-    public double getTotalPay()
-    {
-        return 0.0;
-    }
-    
-    @Override
-    public boolean read(String content)
-    {
-        return true;
-    }
-    
-    @Override
-    public Object write()
-    {
-        return null;
-    }
+    public abstract double getTotalPay();
 }
+    
+  

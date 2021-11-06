@@ -3,33 +3,29 @@ package MarcellaJmartKD;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Store extends Recognizable implements FileParser
+/**
+ * Write a description of class PriceTag here.
+ *
+ * @author Marcella Cinninthya Putri
+ * @version (25/09/2021)
+ */
+
+public class Store extends Serializable
 {
     public static final String REGEX_PHONE = "^\\d{9, 12}$";
     public static final String REGEX_NAME = "^[A-Z](?!.*(\\s)\\1).{4,20}$";
     public String name;
     public String address;
     public String phoneNumber;
+    public double balance;
     
-    public Store(int accountId, String name, String address, String phoneNumber){
-        super(accountId);
+    public Store(String name, String address, String phoneNumber, double balance){
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.balance = balance;
     }
-    
-    public Store(Account account, String name, String address, String phoneNumber){
-        super(account.id);
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
-    
-    @Override
-    public boolean read(String content){
-        return false;
-    }
-    
+   
     @Override
     public String toString(){
         return(
@@ -45,10 +41,10 @@ public class Store extends Recognizable implements FileParser
         Matcher matcher = name.matcher(this.name);
         Pattern phone = Pattern.compile(REGEX_PHONE);
         Matcher matcherPhone = phone.matcher(this.phoneNumber);
-        boolean Matcher = matcher.find();
+        boolean nameMatcher = matcher.find();
         boolean phoneMatcher = matcherPhone.find();
         
-        if(Matcher == true && phoneMatcher == true)
+        if(nameMatcher == true && phoneMatcher == true)
         {
             return true;
         }

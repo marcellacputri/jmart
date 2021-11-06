@@ -1,5 +1,12 @@
 package MarcellaJmartKD;
 
+/**
+ * Write a description of class Account here.
+ * 
+ * @author (Marcella CInninthya Putri)
+ * @version (18/09/2021)
+ */
+
 public enum ProductCategory {
     BOOK, 
     KITCHEN, 
