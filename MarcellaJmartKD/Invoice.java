@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Invoice here.
  *
- * @author (Fika Fikria Riasti)
+ * @author Marcella Cinninthya Putri
  * @version (27/09/2021)
  */
 
