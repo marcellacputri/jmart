@@ -111,7 +111,30 @@ class Jmart {
         return products;
     }
 
-	  public static void main(String[] args){
+	
+	public static void main(String[] args){
+        try{
+        	JsonTable<Payment> table = new JsonTable<>(Payment.class, "randomPaymentList.json");
+        	ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP",Jmart::paymentTimekeeper);
+        	paymentPool.start();
+        	table.forEach(payment -> paymentPool.add(payment));
+        	while (paymentPool.size() != 0);
+        		paymentPool.exit();
+        	while (paymentPool.isAlive());
+        	System.out.println ("Thread exited Successfully");
+        	Gson gson = new Gson();
+        	table.forEach(payment->{
+        		String history = gson.toJson(payment.history);
+        		System.out.println(history);
+        	});
+        }
+        catch(Throwable t) {
+        	t.printStackTrace();
+        }
+	}
+}
+  
+	/*  public static void main(String[] args){
 	        try{
 	           	String filepath = "D:/jmart/account.json";
 	            JsonTable<Account> tblAccount = new JsonTable<>(Account.class, filepath);
