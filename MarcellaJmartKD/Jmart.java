@@ -1,5 +1,6 @@
 package MarcellaJmartKD;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -61,15 +62,15 @@ class Jmart {
         return paginate(list, page, pageSize, predicate);
     }
 	
-	private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
-        if(page < 0){
-            page = 0;
-        }
-        if(pageSize < 0){
-            pageSize = 0;
-        }
-        return list.stream().filter(pagin -> pred.predicate(pagin)).skip(page * pageSize).limit(pageSize).collect(Collectors.toList());
-    }
+	 private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
+	        if(page < 0){
+	            page = 0;
+	        }
+	        if(pageSize < 0){
+	            pageSize = 0;
+	        }
+	        return list.stream().filter(a -> pred.predicate(a)).skip(page * pageSize).limit(pageSize).collect(Collectors.toList());
+	  }
 	
 	public static List<Product> read(String filepath) throws FileNotFoundException {
         List<Product> products = new ArrayList<>();
@@ -85,23 +86,40 @@ class Jmart {
         }
         return products;
     }
-	
-	  public static void main(String[] args)
-	    {
+
+	  public static void main(String[] args){
 	        try{
-	            List<Product> list = read("D:/jmart/randomProductList.json");
-	            List<Product> name = filterByName(list, "Ubuntu", 1, 5);
-	            name.forEach(product -> System.out.println(product.name));
-	            List<Product> account = filterByAccountId(list, 1, 0, 5);
-	            account.forEach(product -> System.out.println(product.name));
-	        }catch (Throwable t)
+	           	String filepath = "D:/jmart/account.json";
+	            JsonTable<Account> tblAccount = new JsonTable<>(Account.class, filepath);
+	            tblAccount.add(new Account("name", "email", "password"));
+	            tblAccount.writeJson();
+	            tblAccount = new JsonTable<>(Account.class, filepath);
+	            tblAccount.forEach(account -> System.out.println(account.toString()));
+	        }
+	        catch (Throwable T)
 	        {
-	            t.printStackTrace();
+	            T.printStackTrace();
 	        }
 	    }
 }
 
-	
+/*JsonTable<Payment> table = new JsonTable<>(Payment.class, "randomPaymentList.json");
+ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP",Jmart::paymentTimekeeper);
+paymentPool.start();
+table.forEach(payment -> paymentPool.add(oayment));
+while (paymentPool.size() != 0);
+	paymentPool.exit();
+while (paymentPool.isAlive());
+System.out.println ("Thread exited Successfully");
+Gson gson = new Gson();
+table.forEach(payment->{
+	String history = gson.toJson(payment.history);
+	System.out.println(history);
+});
+}
+catch(Throwable t) {
+t.printStackTrace();
+}*/
 	
 	/*public static void main(String[] args) {
 		System.out.println(Shipment.Duration.INSTANT.getEstimatedArrival(new Date()));
