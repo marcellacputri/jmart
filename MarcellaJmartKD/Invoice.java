@@ -20,7 +20,8 @@ public abstract class Invoice extends Serializable
         ON_DELIVERY,
         COMPLAINT,
         FINISHED,
-        FAILED
+        FAILED,
+        DELIVERED
     }
 
     public enum Rating
