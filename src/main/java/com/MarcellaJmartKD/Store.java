@@ -2,7 +2,7 @@ package com.MarcellaJmartKD;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import com.MarcellaJmartKD.dbjson.Serializable;
 /**
  * Write a description of class PriceTag here.
  *

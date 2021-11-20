@@ -1,6 +1,7 @@
 package com.MarcellaJmartKD;
 
 import java.util.Date;
+import com.MarcellaJmartKD.dbjson.Serializable;
 import java.util.ArrayList;
  
 /**

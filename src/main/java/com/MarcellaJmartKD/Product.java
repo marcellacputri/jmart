@@ -1,5 +1,7 @@
 package com.MarcellaJmartKD;
 
+import com.MarcellaJmartKD.dbjson.Serializable;
+
 /**
  * Write a description of class Product here.
  *

@@ -9,6 +9,7 @@ package com.MarcellaJmartKD;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.MarcellaJmartKD.dbjson.Serializable;
 
 public class Account extends Serializable 
 {

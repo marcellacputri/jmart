@@ -2,6 +2,7 @@ package com.MarcellaJmartKD;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.MarcellaJmartKD.dbjson.Serializable;
 
 /**
  * Write a description of class Complaint here.
