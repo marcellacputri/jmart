@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 @RequestMapping("/account")
 public abstract class AccountController implements BasicGetController<Account>
 {
-	public static @JsonAutowired(value=Account.class, filepath="src/main") JsonTable<Account> accountTable;
+	public static @JsonAutowired(value=Account.class, filepath="D:/jmart/src/main") JsonTable<Account> accountTable;
 	public static final String REGEX_EMAIL = "^[a-zA-Z0-9&]+(?:\\.[a-zA-Z0-9&]+)@[A-Za-z0-9]{1}[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9-]+)$";
 	public static final String REGEX_PASSWORD = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 	public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
@@ -35,6 +35,11 @@ public abstract class AccountController implements BasicGetController<Account>
 		}
 		return null;
 	}
+	
+	/*@GetMapping("/{id}")
+	String getById(@PathVariable int id) { return "account id " + id + " not found!"; }
+	*/
+
 
 	@PostMapping("/register")
 	Account register
@@ -57,14 +62,13 @@ public abstract class AccountController implements BasicGetController<Account>
 
 	@PostMapping("/{id}/registerStore")
 	Store registerStore(int id, String name, String address, String phoneNumber){
-		return null;
-		/*if(accountTable.contains(accountTable.get(id)) && accountTable.get(id).store == null){
+		if(accountTable.contains(accountTable.get(id)) && accountTable.get(id).store == null){
 			Store newStore = new Store(name, address, phoneNumber, 0);
 			accountTable.get(id).store = newStore;
 			return newStore;
 		}else{
 			return null;
-		}*/
+		}
 	}
 
 	@PostMapping("/{id}/topUp")
@@ -77,8 +81,5 @@ public abstract class AccountController implements BasicGetController<Account>
 		}
 
 	}
-
-	/*@GetMapping("/{id}")
-	String getById(@PathVariable int id) { return "account id " + id + " not found!"; }
-	*/
 }
+	
