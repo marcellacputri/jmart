@@ -3,8 +3,7 @@ package com.MarcellaJmartKD.controller;
 import com.MarcellaJmartKD.dbjson.Serializable;
 import com.MarcellaJmartKD.dbjson.JsonTable;
 import com.MarcellaJmartKD.Algorithm;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
@@ -18,8 +17,8 @@ import java.util.List;
 @RestController
 public interface BasicGetController <T extends Serializable>{
 	@GetMapping("/page")
-	public default List<T> getPage (int page, int pageSize){
-		 return Algorithm.<T>paginate(getJsonTable(), page, pageSize, e->true);
+	default @ResponseBody List<T> getPage(@RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="5") int pageSize){
+        return Algorithm.<T>paginate(getJsonTable(),page,pageSize,e -> true);
 	}
 	
 	@GetMapping("/id")
