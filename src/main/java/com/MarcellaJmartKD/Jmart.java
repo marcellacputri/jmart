@@ -1,23 +1,25 @@
 package com.MarcellaJmartKD;
 
+import com.MarcellaJmartKD.dbjson.JsonTable;
+import com.MarcellaJmartKD.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.io.BufferedReader;
+import java.util.Date;
 import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import java.util.stream.Collectors;
-
+import java.lang.reflect.Type;
 /**
- * Write a description of class Complaint here.
+ * Write a description of class Jmart here.
  *
  * @author (Marcella Cinninthya Putri)
  * @version (11/09/2021)
@@ -26,7 +28,9 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 public class Jmart {
 	public static void main(String[] args){
-		SpringApplication.run(Jmart.class,args);
+		JsonDBEngine.Run(Jmart.class);
+        SpringApplication.run(Jmart.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
 	   }
 	
 	public static long DELIVERED_LIMIT_MS = 3;
