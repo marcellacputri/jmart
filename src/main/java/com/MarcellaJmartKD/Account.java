@@ -21,13 +21,13 @@ public class Account extends Serializable
     public String password;
     public double balance;
 
-    public Account (String name, String email, String password)
-    {
+    public Account(String name, String email, String password, double balance){
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = balance;
     }
-
+	
     @Override
     public String toString(){
         return(
@@ -37,8 +37,7 @@ public class Account extends Serializable
         );
     }
     
-     public boolean validate()
-    {
+     public boolean validate() {
         Pattern emailPattern = Pattern.compile(REGEX_EMAIL);
         Matcher emailMatcher = emailPattern.matcher(this.email);
         Pattern sandiPattern = Pattern.compile(REGEX_PASSWORD);
@@ -46,8 +45,7 @@ public class Account extends Serializable
         boolean sandiMatch = sandiMatcher.find();
         boolean emailMatch = emailMatcher.find();
         
-        if(sandiMatch == true && emailMatch == true)
-        {
+        if(sandiMatch == true && emailMatch == true) {
             return true;
         }
         return false;

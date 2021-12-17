@@ -2,8 +2,7 @@ package com.MarcellaJmartKD;
 
 import java.util.Date;
 import com.MarcellaJmartKD.dbjson.Serializable;
-import java.util.ArrayList;
- 
+
 /**
  * Write a description of class Invoice here.
  *
@@ -11,53 +10,35 @@ import java.util.ArrayList;
  * @version (27/09/2021)
  */
 
-public abstract class Invoice extends Serializable 
+public abstract class Invoice extends Serializable
 {
-    public enum Status
-    {
-        WAITING_CONFIRMATION,
-        CANCELLED,
-        ON_PROGRESS,
-        ON_DELIVERY,
-        COMPLAINT,
-        FINISHED,
-        FAILED,
-        DELIVERED
-    }
-
-    public enum Rating
-    {
-        NONE,
-        BAD,
-        NEUTRAL,
-        GOOD
-    }
-    
-    public Date date;
     public int buyerId;
-    public int productId;
     public int complaintId;
+    public final Date date;
+//    public ArrayList<Record> history = new ArrayList<>();
+    public int productId;
     public Rating rating;
-    public Status status;
-    //public ArrayList<Record> history = new ArrayList<Record>();
-    
-    class Record
-    {
-        public Status status;
-        public String message;
-        public Date date;
+    public enum Status{
+        WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY,
+        COMPLAINT, FINISHED, FAILED, DELIVERED
     }
-    
-    protected Invoice(int buyerId, int productId)
-    {
+    public enum Rating{
+        NONE, BAD, NEUTRAL, GOOD
+    }
+    class Record{
+        public Date date;
+        public String message;
+        public Status status;
+    }
+    protected Invoice(int buyerId, int productId){
         this.buyerId = buyerId;
         this.productId = productId;
         this.date = new Date();
         this.rating = Rating.NONE;
         this.complaintId = -1;
     }
-
     public abstract double getTotalPay(Product product);
 }
+
     
   

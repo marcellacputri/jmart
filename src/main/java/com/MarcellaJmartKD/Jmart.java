@@ -1,23 +1,17 @@
 package com.MarcellaJmartKD;
 
-import com.MarcellaJmartKD.dbjson.JsonTable;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
 import com.MarcellaJmartKD.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.io.FileNotFoundException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import java.util.stream.Collectors;
-import java.lang.reflect.Type;
+
 /**
  * Write a description of class Jmart here.
  *
@@ -32,7 +26,9 @@ public class Jmart {
         SpringApplication.run(Jmart.class, args);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
 	   }
+}
 	
+	/*
 	public static long DELIVERED_LIMIT_MS = 3;
     public static long ON_DELIVERY_LIMIT_MS = 3;
     public static long ON_PROGRESS_LIMIT_MS = 3;
@@ -203,3 +199,4 @@ t.printStackTrace();
 	 * 
 	 * public static Shipment.Duration createShipmentDuration() { return null; }
 	 */
+	
